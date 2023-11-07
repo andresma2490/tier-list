@@ -3,16 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'tier-list/:id',
     loadChildren: () =>
-      import('./tier-list/tier-list-app.module').then(
-        (m) => m.TierListAppModule,
+      import('./pages/tier-list/tier-list.module').then(
+        (m) => m.TierListModule,
       ),
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class TierListAppRoutingModule {}

@@ -1,0 +1,31 @@
+<div class="container mx-auto max-w-5xl">
+  <h1 class="my-10 text-2xl font-bold">{{ title }}</h1>
+  <app-tier-table>
+    <app-tier-row *ngFor="let row of table">
+      <div
+        rowName
+        *ngIf="row.rowName"
+        class="flex h-20 w-36 flex-shrink-0 items-center justify-center text-2xl"
+        [style.background]="row.background"
+        [style.color]="row.color"
+      >
+        {{ row.rowName }}
+      </div>
+      <app-tier-item
+        rowItems
+        *ngFor="let item of row.rowItems"
+        [tierItem]="item"
+      ></app-tier-item>
+    </app-tier-row>
+  </app-tier-table>
+
+  <div class="my-10">
+    <app-tier-row>
+      <app-tier-item
+        rowItems
+        *ngFor="let item of items"
+        [tierItem]="item"
+      ></app-tier-item>
+    </app-tier-row>
+  </div>
+</div>
