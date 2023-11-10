@@ -8,7 +8,8 @@ import { data } from '../mocks/tier-list.mock';
 export class TierListMockService {
   constructor() {}
 
-  getData() {
+  getData(id: string) {
+    console.log({ id });
     return of(data).pipe(delay(1000));
   }
 }

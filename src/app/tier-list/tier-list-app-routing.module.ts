@@ -9,6 +9,13 @@ const routes: Routes = [
         (m) => m.TierListModule,
       ),
   },
+  {
+    path: 'tier-maker/:id',
+    loadChildren: () =>
+      import('./pages/tier-maker/tier-maker.module').then(
+        (m) => m.TierMakerModule,
+      ),
+  },
 ];
 
 @NgModule({

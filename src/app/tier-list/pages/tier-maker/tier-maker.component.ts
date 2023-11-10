@@ -4,11 +4,11 @@ import { TierListMockService } from '../../services/tier-list-mock.service';
 import { TierItem, TierTable } from '../../models/tier-list.model';
 
 @Component({
-  selector: 'app-tier-list',
-  templateUrl: './tier-list.component.html',
-  styleUrls: ['./tier-list.component.scss'],
+  selector: 'app-tier-maker',
+  templateUrl: './tier-maker.component.html',
+  styleUrls: ['./tier-maker.component.scss'],
 })
-export class TierListComponent implements OnInit {
+export class TierMakerComponent implements OnInit {
   id = '';
   title = '';
   table: TierTable = [];
