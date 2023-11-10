@@ -1,9 +1,22 @@
 <div class="container mx-auto max-w-5xl">
   <h1 class="my-10 text-2xl font-bold">{{ title }}</h1>
-  <app-tier-table>
-    <app-tier-row *ngFor="let row of table">
+  <app-tier-table
+    [cdkDropListData]="table"
+    (cdkDropListDropped)="moveRow($event)"
+    cdkDropList
+    cdkDropListGroup
+  >
+    <app-tier-row
+      *ngFor="let row of table"
+      cdkDrag
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      (cdkDropListDropped)="moveItem($event)"
+      [cdkDropListData]="row.rowItems"
+    >
       <div
         rowName
+        cdkDragHandle
         *ngIf="row.rowName"
         class="flex w-36 flex-shrink-0 items-center justify-center text-2xl"
         [style.background]="row.background"
@@ -12,20 +25,30 @@
         {{ row.rowName }}
       </div>
       <app-tier-item
+        cdkDrag
         rowItems
         *ngFor="let item of row.rowItems"
         [tierItem]="item"
-      ></app-tier-item>
+      >
+        <div *cdkDragPlaceholder class="w-36"></div>
+      </app-tier-item>
     </app-tier-row>
+    <div class="my-10">
+      <app-tier-row
+        cdkDropList
+        cdkDropListOrientation="horizontal"
+        (cdkDropListDropped)="moveItem($event)"
+        [cdkDropListData]="items"
+      >
+        <app-tier-item
+          cdkDrag
+          rowItems
+          *ngFor="let item of items"
+          [tierItem]="item"
+        >
+          <div *cdkDragPlaceholder class="w-36"></div>
+        </app-tier-item>
+      </app-tier-row>
+    </div>
   </app-tier-table>
-
-  <div class="my-10">
-    <app-tier-row>
-      <app-tier-item
-        rowItems
-        *ngFor="let item of items"
-        [tierItem]="item"
-      ></app-tier-item>
-    </app-tier-row>
-  </div>
 </div>
