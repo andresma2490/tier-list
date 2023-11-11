@@ -2,6 +2,7 @@ import { TierListData } from '../models/tier-list.model';
 
 export const data: TierListData = {
   title: 'Tier list de cursos de Platzi y otros',
+  description: '',
   table: [
     {
       background: '#ff7f7e',
@@ -65,14 +66,15 @@ export const data: TierListData = {
         },
       ],
     },
-  ],
-
-  items: [
     {
-      image:
-        'https://static.platzi.com/media/blog/blog-manos-og-aa2e8eea-0bab-40c6-9ada-2f6b6a398add.png',
-      name: 'Curso de cómo lavarse correctamente las manos',
-      url: 'https://platzi.com/blog/lavarte-manos/',
+      rowItems: [
+        {
+          image:
+            'https://static.platzi.com/media/blog/blog-manos-og-aa2e8eea-0bab-40c6-9ada-2f6b6a398add.png',
+          name: 'Curso de cómo lavarse correctamente las manos',
+          url: 'https://platzi.com/blog/lavarte-manos/',
+        },
+      ],
     },
   ],
 };

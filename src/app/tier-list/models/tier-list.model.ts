@@ -1,24 +1,24 @@
 export interface TierItem {
-  id?: string;
+  _id?: string;
   image: string;
   name: string;
   url: string;
 }
 
 export interface TierRow {
-  id?: string;
+  _id?: string;
   background?: string;
   color?: string;
   rowBackground?: string;
-  rowName: string;
+  rowName?: string;
   rowItems: TierItem[];
 }
 
 export type TierTable = TierRow[];
 
 export interface TierListData {
-  id?: string;
-  title: string;
-  items: TierItem[];
+  _id?: string;
+  description?: string;
   table: TierTable;
+  title: string;
 }

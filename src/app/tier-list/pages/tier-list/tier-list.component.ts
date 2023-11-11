@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subject, delay, takeUntil } from 'rxjs';
 import { TierListMockService } from '../../services/tier-list-mock.service';
-import { TierItem, TierTable } from '../../models/tier-list.model';
+import { TierTable } from '../../models/tier-list.model';
 
 @Component({
   selector: 'app-tier-list',
   templateUrl: './tier-list.component.html',
   styleUrls: ['./tier-list.component.scss'],
 })
-export class TierListComponent implements OnInit {
+export class TierListComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   id = '';
   title = '';
   table: TierTable = [];
-  items: TierItem[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -21,10 +22,15 @@ export class TierListComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') ?? '';
-    this.tierListService.getData(this.id).subscribe((data) => {
-      this.title = data.title;
-      this.table = data.table;
-      this.items = data.items;
-    });
+    this.tierListService.tierListData$
+      .pipe(takeUntil(this.destroy$), delay(200))
+      .subscribe((data) => {
+        this.title = data.title;
+        this.table = data.table;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
   }
 }

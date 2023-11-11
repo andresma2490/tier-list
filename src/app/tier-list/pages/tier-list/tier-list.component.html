@@ -10,7 +10,7 @@
     </a>
   </div>
   <app-tier-table>
-    <app-tier-row *ngFor="let row of table">
+    <app-tier-row *ngFor="let row of table; let last = last" [last]="last">
       <div
         rowName
         *ngIf="row.rowName"
@@ -27,14 +27,4 @@
       ></app-tier-item>
     </app-tier-row>
   </app-tier-table>
-
-  <div class="my-10">
-    <app-tier-row>
-      <app-tier-item
-        rowItems
-        *ngFor="let item of items"
-        [tierItem]="item"
-      ></app-tier-item>
-    </app-tier-row>
-  </div>
 </div>

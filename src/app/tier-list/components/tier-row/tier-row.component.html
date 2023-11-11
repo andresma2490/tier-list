@@ -1,4 +1,7 @@
-<div class="flex min-h-[5rem] border-b-4 border-zinc-800 bg-zinc-950">
+<div
+  class="flex min-h-[5rem] border-b-4 border-zinc-800"
+  [ngClass]="{ 'border-t-[3rem]': last }"
+>
   <ng-content select="[rowName]"></ng-content>
   <div class="flex flex-wrap">
     <ng-content select="[rowItems]"></ng-content>
