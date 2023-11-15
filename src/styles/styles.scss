@@ -1,0 +1,18 @@
+@import '@angular/cdk/overlay-prebuilt.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "_buttons";
+
+body {
+  @apply bg-zinc-800;
+  @apply text-zinc-50;
+}
+
+.ng-touched.ng-invalid:is(input, textarea),
+.ng-touched.ng-invalid.ng-dirty:is(input, textarea) {
+  @apply border-b-2;
+  @apply border-danger-700;
+}

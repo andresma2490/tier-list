@@ -4,13 +4,13 @@
     <a
       [routerLink]="['/tier-maker', id]"
       type="button"
-      class="rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      class="btn btn-primary"
     >
       Editar
     </a>
   </div>
   <app-tier-table>
-    <app-tier-row *ngFor="let row of table; let last = last" [last]="last">
+    <app-tier-row *ngFor="let row of table; let last = last" [isLast]="last">
       <div
         rowName
         *ngIf="row.rowName"

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tier-row',
@@ -6,5 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./tier-row.component.scss'],
 })
 export class TierRowComponent {
-  @Input() last = false;
+  @Input() isLast = false;
+  @Input() isEditing = false;
+  @Output() addItem = new EventEmitter<void>();
 }

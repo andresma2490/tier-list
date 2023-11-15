@@ -27,6 +27,9 @@ export class TierListComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         this.title = data.title;
         this.table = data.table;
+        if (this.table.length === 0) {
+          this.tierListService.getTierListData(this.id);
+        }
       });
   }
 

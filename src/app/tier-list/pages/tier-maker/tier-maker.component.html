@@ -1,11 +1,7 @@
 <div class="container mx-auto my-10 max-w-5xl">
   <div class="my-10 flex flex-wrap justify-between gap-3">
     <h1 class="text-2xl font-bold">{{ title }}</h1>
-    <a
-      [routerLink]="['/tier-list', id]"
-      type="button"
-      class="rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-    >
+    <a [routerLink]="['/tier-list', id]" type="button" class="btn btn-primary">
       Guardar
     </a>
   </div>
@@ -20,9 +16,11 @@
       cdkDropList
       cdkDropListOrientation="horizontal"
       (cdkDropListDropped)="moveItem($event)"
+      (addItem)="openItemFormModal()"
       [cdkDropListData]="rowIndex"
       [cdkDragDisabled]="last"
-      [last]="last"
+      [isLast]="last"
+      [isEditing]="true"
     >
       <div
         rowName
@@ -37,11 +35,23 @@
       <app-tier-item
         cdkDrag
         rowItems
-        *ngFor="let item of row.rowItems"
+        *ngFor="let item of row.rowItems; index as itemIndex"
         [tierItem]="item"
+        [isEditing]="true"
+        (edit)="openItemFormModal($event, rowIndex, itemIndex)"
+        (delete)="deleteItem($event, rowIndex, itemIndex)"
       >
         <div *cdkDragPlaceholder class="w-36"></div>
       </app-tier-item>
     </app-tier-row>
   </app-tier-table>
 </div>
+
+<app-modal *ngIf="showItemFormModal" (closeModal)="closeItemFormModal()">
+  <app-tier-item-form
+    [tierItem]="tierItem"
+    (save)="addItem($event, table.length - 1)"
+    (update)="editItem($event, tierRowIndex, tierItemIndex)"
+    (cancel)="closeItemFormModal()"
+  ></app-tier-item-form>
+</app-modal>

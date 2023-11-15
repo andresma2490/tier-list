@@ -1,0 +1,49 @@
+.btn {
+  @apply rounded-lg;
+  @apply px-5;
+  @apply py-2.5;
+  @apply text-sm;
+  @apply font-medium;
+  @apply focus:outline-none;
+  @apply focus:ring-4;
+}
+
+.btn-primary {
+  @apply text-white;
+  @apply bg-primary-700;
+  @apply hover:bg-primary-800;
+  @apply focus:ring-primary-300;
+  @apply dark:bg-primary-600;
+  @apply dark:hover:bg-primary-700;
+  @apply dark:focus:ring-primary-800;
+}
+
+.btn-secondary {
+  @apply text-white;
+  @apply bg-secondary-500;
+  @apply hover:bg-secondary-700;
+  @apply focus:ring-secondary-300;
+  @apply dark:bg-secondary-600;
+  @apply dark:hover:bg-secondary-500;
+  @apply dark:focus:ring-secondary-700;
+}
+
+.btn-success {
+  @apply text-white;
+  @apply bg-success-700;
+  @apply hover:bg-success-800;
+  @apply focus:ring-success-300;
+  @apply dark:bg-success-600;
+  @apply dark:hover:bg-success-700;
+  @apply dark:focus:ring-success-800;
+}
+
+.btn-danger {
+  @apply text-white;
+  @apply bg-danger-700;
+  @apply hover:bg-danger-800;
+  @apply focus:ring-danger-300;
+  @apply dark:bg-danger-600;
+  @apply dark:hover:bg-danger-700;
+  @apply dark:focus:ring-danger-800;
+}

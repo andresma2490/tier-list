@@ -1,9 +1,21 @@
 <div
-  class="flex min-h-[5rem] border-b-4 border-zinc-800"
-  [ngClass]="{ 'border-t-[3rem]': last }"
+  *ngIf="isLast && isEditing"
+  class="flex flex-wrap justify-end bg-zinc-800 pb-5 pt-10"
+>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="addItem.emit()"
+  >
+    Nuevo Item
+  </button>
+</div>
+<div
+  class="flex border-b-4 border-zinc-800"
+  [ngClass]="{ 'border-t-[3rem]': isLast && !isEditing }"
 >
   <ng-content select="[rowName]"></ng-content>
-  <div class="flex flex-wrap">
+  <div class="flex flex-wrap min-h-[5rem]">
     <ng-content select="[rowItems]"></ng-content>
   </div>
 </div>

@@ -2,7 +2,7 @@ export interface TierItem {
   _id?: string;
   image: string;
   name: string;
-  url: string;
+  url?: string;
 }
 
 export interface TierRow {
